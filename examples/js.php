@@ -1,18 +1,15 @@
-<h2>JS for these tabs</h2>
+<h2>JS for this demo</h2>
 
-<pre>
-<code>
-&lt;script src="/javascripts/jquery.js" type="text/javascript"&gt;&lt;/script&gt;
-&lt;script src="/javascripts/jquery.hashchange.js" type="text/javascript"&gt;&lt;/script&gt;
-&lt;script src="/javascripts/jquery.ajaxtabs.js" type="text/javascript"&gt;&lt;/script&gt;
-</code>
-</pre>
+<xmp>
+   <script type="text/javascript">
+      $(document).ready(function() {
 
-<p>Optionally include the jquery <a href="http://benalman.com/projects/jquery-hashchange-plugin/">hashchange plugin</a> (recommended) or <a href="http://www.asual.com/jquery/address/docs/">address plugin</a> to enable forward-
-and back-button functionality.</p>
+         $(".etabs .tab a[href='html.php']").data('post', {
+            _ajax_nonce: Math.random().toString(36).substring(7),
+            action: "test_ajax",
+            toto: 'totoistoto' });
 
-<pre>
-<code>
-$('#tab-container').ajaxtabs();
-</code>
-</pre>
+         $('#tab-container').ajaxtabs();
+      });
+   </script>
+</xmp>

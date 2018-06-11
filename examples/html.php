@@ -1,29 +1,37 @@
-<h2>HTML Markup for these tabs</h2>
+<h2>HTML Markup for this demo</h2>
 
-<pre>
-<code>
-&lt;div id="tab-container" class="tab-container"&gt;
-&lt;ul class='etabs'&gt;
-&lt;li class='tab'&gt;&lt;a href="#tabs1-html"&gt;HTML Markup&lt;/a&gt;&lt;/li&gt;
-&lt;li class='tab'&gt;&lt;a href="#tabs1-js"&gt;Required JS&lt;/a&gt;&lt;/li&gt;
-&lt;li class='tab'&gt;&lt;a href="#tabs1-css"&gt;Example CSS&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div id="tabs1-html"&gt;
-&lt;h2&gt;HTML Markup for these tabs&lt;/h2&gt;
-&lt;!-- content --&gt;
-&lt;/div&gt;
-&lt;div id="tabs1-js"&gt;
-&lt;h2&gt;JS for these tabs&lt;/h2&gt;
-&lt;!-- content --&gt;
-&lt;/div&gt;
-&lt;div id="tabs1-css"&gt;
-&lt;h2&gt;CSS Styles for these tabs&lt;/h2&gt;
-&lt;!-- content --&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</code>
-</pre>
+<xmp>
+   <div id="tab-container" class='tab-container'>
+      <ul class='etabs'>
+         <li class='tab'><a href="html.php" data-target="tabs-html">HTML Markup</a></li>
+         <li class='tab'><a href="js.php" data-target="tabs-js">Required JS</a></li>
+         <li class='tab'><a href="css.php" data-target="tabs-css">Example CSS</a></li>
+      </ul>
 
-<p>The HTML markup for your tabs and content can be arranged however you want. At the minimum, you need a container, a collection of links for your tabs (an unordered list by default), and matching divs for your tabbed content. Make sure the tab <code>href</code> attributes match the
-<code>id</code> of the target panel. This is standard semantic markup for in-page anchors.</p>
+      <div class='panel-container'>
+         <div id="tabs-html"></div>
+         <div id="tabs-js"></div>
+         <div id="tabs-css"></div>
+      </div>
+
+   </div>
+</xmp>
+
+<p>The HTML markup for your tabs and content can be arranged however you want. At the minimum, you need a container, a collection of links for your tabs (an unordered list by default), and matching divs for your tabbed content. Make sure the tab <code>data-target</code> attributes match the
+<code>id</code> of the target panel.</p>
 <p>The class names above are just to make it easy to style. You can make them whatever you want, there's no magic here.</p>
+
+<?php
+if ( isset($_POST['_ajax_nonce']) && isset($_POST['action']) && isset($_POST['toto']) ): ?>
+
+<p>This are parameters from the POST request :
+
+   <ul>
+      <li>$_POST['_ajax_nonce']) : <?php echo $_POST['_ajax_nonce']; ?></li>
+      <li>$_POST['action']) : <?php echo $_POST['action']; ?></li>
+      <li>$_POST['toto']) : <?php echo $_POST['toto']; ?></li>
+   </ul>
+
+</p>
+
+<?php endif;
