@@ -46,7 +46,7 @@ This will fill the matching divs inside `.panel-container` with the response of 
 
 Notes :
 - You can include your tabs links anywhere within the container with the tabs option. Default is inside a list item (`li`) inside an unordered list (`ul`).
-- <sup>1</sup> This is needed to avoid error 405 on POST requests.
+- <sup>1</sup> Or anything capable to handle POST requests to avoid errors 405.
 
 #### Javascript
 Obviously you need jQuery and AjaxTabs, and you need to init AjaxTabs with your container.

@@ -85,7 +85,7 @@
       $(document).ready(function() {
 
          $(".etabs .tab a[href='html.php']").data('post', {
-            _ajax_nonce: Math.random().toString(36).substring(7),
+            _ajax_nonce: "<?php echo bin2hex(random_bytes(5)); ?>",
             action: "test_ajax",
             toto: 'totoistoto' });
 
