@@ -68,23 +68,46 @@ Obviously you need jQuery and AjaxTabs, and you need to init AjaxTabs with your 
 | Option          | Description                                                     | Values (`default`)                              |
 |---|---|---|
 |animate          | Makes content panels fade out and in when a new tab is clicked. | Boolean (`true`)                                |
+|animationSpeed   | Controls the speed of the fading effect if `animate: true`.     | Integer in milliseconds (`200`)                 |
 |panelActiveClass | Adds specified class to the currently-selected content panel    | Any string valid as HTML class (`panelActive`)  |
 |tabActiveClass   | Adds specified class to the currently-selected tab              | Any string valid as HTML class (`tabActive`)    |
 |tabs             | jQuery selector for the tabs, relative to the container element | Any jquery selector (`> ul > li`)               |
 |cache            | Reuse the first response retrieved with ajax                    | Boolean (`true`)                                |
 
-Missing options from EasyTabs to be added later :
+Missing options from EasyTabs to be added later (transitionIn* and transitionOut* will be merged):
 
 - defaultTab
 - updateHash
-- transitionIn
-- transitionOut
-- transitionInEasing
-- transitionOutEasing
-- transitionCollapse
-- transitionUncollapse
-- transitionCollapseEasing
-- transitionUncollapseEasing
+- transition
+- transitionEasing
+
+
+### Hooks
+
+| Option               | Description                                                     | Returned values                                |
+|---|---|---|
+|ajaxtabs:before       | Fires before a tab is selected.                                 | $tabLink, $targetPanel, settings               |
+|ajaxtabs:midTransition| Fires after the previous panel has been hidden, but before the next is shown. | $tabLink, $targetPanel, settings |
+|ajaxtabs:beforeSend   | Fires before a request is done, only if a request is done.      | $tabLink, $targetPanel, postParams, settings   |
+|ajaxtabs:complete     | Fires when the request is complete (or immediately if cached)   | $tabLink, $targetPanel, data, settings         |
+|ajaxtabs:after        | Fires after a tab has been selected                             | $tabLink, $targetPanel, settings               |
+
+- $tabLink : jQuery object of the clicked link.
+- $targetPanel : Targeted panel.
+- settings : Settings used in the transition.
+- postParams : Parameters send along the request.
+- data : data returned by the request, `null` if cached.
+
+**Example of usage** :
+
+```
+$('#tab-container').ajaxtabs()
+.bind('ajaxtabs:complete', function(e, $tabLink, $targetPanel) {
+
+   $(document).attr("title", "AjaxTabs Demo | " + $targetPanel.children('h2').text());
+
+});
+```
 
 
 ### Pass parameters
