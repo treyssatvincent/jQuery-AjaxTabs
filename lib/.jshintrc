@@ -1,4 +1,6 @@
 {
-  "strict": true,
+  "strict": "global",
+  "browser": true,
+  "jquery": true,
   "esversion": 5
 }

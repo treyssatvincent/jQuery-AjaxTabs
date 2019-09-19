@@ -17,7 +17,6 @@ function check() {
 }
 
 function minifyJs() {
-    console.log('minify');
     return gulp.src(src)
         .pipe(plumber())
         .pipe(uglify())
