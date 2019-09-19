@@ -1,7 +1,7 @@
 {
   "name": "ajaxtabs",
   "title": "jQuery AjaxTabs - AJAX Tabs without styling.",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "AjaxTabs is a lightweight jQuery plugin to provide full AJAX tab functionality, while leaving the styling up to you.",
   "repository": "https://github.com/treyssatvincent/jQuery-AjaxTabs",
   "bugs": "https://github.com/treyssatvincent/jQuery-AjaxTabs/issues",
@@ -14,14 +14,18 @@
   "main": "./dist/jquery.ajaxtabs.min.js",
   "scripts": {
     "build": "gulp",
-    "prepare": "gulp"
+    "prepare": "gulp",
+    "check": "gulp check"
   },
   "dependencies": {
     "jquery": "^3.4.1"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
+    "gulp-jshint": "^2.1.0",
     "gulp-plumber": "^1.2.1",
-    "gulp-uglify": "^3.0.2"
+    "gulp-uglify": "^3.0.2",
+    "jshint": "^2.10.2",
+    "jshint-stylish": "^2.2.1"
   }
 }
