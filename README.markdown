@@ -132,6 +132,5 @@ $(".etabs .tab a[href='html.php']").data('post', {
 
 ## Info
 * Based on [jQuery EasyTabs](https://os.alfajango.com/easytabs/)
-* Author: [Nino Treyssat-Vincent](https://nino.treyssatvincent.fr)
-* Company: [WeLikeStartup](https://app.welikestartup.io/)
-* License: Licensed under the [GNU General Public License v3.0](http://www.gnu.org/licenses/gpl.html).
+* Originally forked at the company [WeLikeStartup](https://app.welikestartup.io/)
+* Licensed under the [GNU General Public License v3.0](http://www.gnu.org/licenses/gpl.html).
