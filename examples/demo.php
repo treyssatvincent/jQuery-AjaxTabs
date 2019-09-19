@@ -3,7 +3,7 @@
 <head>
    <meta charset="utf-8">
    <title>AjaxTabs Demo</title>
-   <script src="../vendor/jquery-3.3.1.js" type="text/javascript"></script>
+   <script src="../node_modules/jquery/dist/jquery.js" type="text/javascript"></script>
    <script src="../lib/jquery.ajaxtabs.js" type="text/javascript"></script>
 
    <style>
