@@ -130,7 +130,7 @@ $(".etabs .tab a[href='html.php']").data('post', {
 });
 ```
 
-## Info
+## Credits
 * Based on [jQuery EasyTabs](https://os.alfajango.com/easytabs/)
 * Originally forked at the company [WeLikeStartup](https://app.welikestartup.io/)
 * Licensed under the [GNU General Public License v3.0](http://www.gnu.org/licenses/gpl.html).
