@@ -23,7 +23,7 @@ Unlike jQuery UI tabs, it handles only the functionality of the tabs and leave t
 ### Minimum requirements
 #### HTML
 
-You need a container, a list of links to PHP pages<sup>1</sup> for your tabs, and matching divs for your tabbed content.
+You need a container, a list of links to pages for your tabs, and matching divs for your tabbed content.
 
 ```
 <div id="tab-container" class='tab-container'>
@@ -46,7 +46,6 @@ This will fill the matching divs inside `.panel-container` with the response of 
 
 Notes :
 - You can include your tabs links anywhere within the container with the tabs option. Default is inside a list item (`li`) inside an unordered list (`ul`).
-- <sup>1</sup> Or anything capable to handle POST requests to avoid errors 405.
 
 #### Javascript
 Obviously you need jQuery and AjaxTabs, and you need to init AjaxTabs with your container.
@@ -67,6 +66,7 @@ Obviously you need jQuery and AjaxTabs, and you need to init AjaxTabs with your 
 ### Options
 | Option          | Description                                                     | Values (`default`)                              |
 |---|---|---|
+|method           | Method used for requests (e.g. "POST", "GET", "PUT")            | String (`POST`)                                 |
 |animate          | Makes content panels fade out and in when a new tab is clicked. | Boolean (`true`)                                |
 |animationSpeed   | Controls the speed of the fading effect if `animate: true`.     | Integer in milliseconds (`200`)                 |
 |panelActiveClass | Adds specified class to the currently-selected content panel    | Any string valid as HTML class (`panelActive`)  |
@@ -88,17 +88,21 @@ Missing options from EasyTabs to be added later (transitionIn* and transitionOut
 |---|---|---|
 |ajaxtabs:before       | Fires before a tab is selected.                                 | $tabLink, $targetPanel, settings               |
 |ajaxtabs:midTransition| Fires after the previous panel has been hidden, but before the next is shown. | $tabLink, $targetPanel, settings |
-|ajaxtabs:beforeSend   | Fires before a request is done, only if a request is done.      | $tabLink, $targetPanel, postParams, settings   |
-|ajaxtabs:complete     | Fires when the request is complete (or immediately if cached)   | $tabLink, $targetPanel, data, settings         |
+|ajaxtabs:beforeSend   | Fires before a request is done, only if a request is done.      | $tabLink, $targetPanel, data, settings   |
+|ajaxtabs:complete     | Fires when the request is complete (or immediately if cached)   | $tabLink, $targetPanel, result, settings         |
 |ajaxtabs:after        | Fires after a tab has been selected                             | $tabLink, $targetPanel, settings               |
 
 - $tabLink : jQuery object of the clicked link.
 - $targetPanel : Targeted panel.
 - settings : Settings used in the transition.
-- postParams : Parameters send along the request.
-- data : data returned by the request, `null` if cached.
+- data : Data send along the request.
+- result : data returned by the request, `null` if cached.
 
 **Example of usage** :
+
+```
+$('#tab-container').ajaxtabs({method: 'GET'})
+```
 
 ```
 $('#tab-container').ajaxtabs()
@@ -109,21 +113,12 @@ $('#tab-container').ajaxtabs()
 });
 ```
 
-
 ### Pass parameters
-To include parameters along an AJAX request you need to use a `data-post` on the link. You can add it with simple HTML attribute :
-
-```
-<ul class='etabs'>
-   <li class='tab'><a href="html.php" data-target="tabs-html" data-post="{ foo: 'bar', fruit: 'banana'}">HTML Markup</a></li>
-   <li class='tab'><a href="js.php" data-target="tabs-js">Required JS</a></li>
-   <li class='tab'><a href="css.php" data-target="tabs-css">Example CSS</a></li>
-</ul>
-```
+To include parameters along an AJAX request you need to use a `data-tab` on the link. You can add it with simple HTML attribute :
 
 You can of course add it in any way you want, for example with jQuery and PHP :
 ```
-$(".etabs .tab a[href='html.php']").data('post', {
+$(".etabs .tab a[href='html.php']").data('tab', {
    random: Math.random().toString(36).substring(7),
    foo: "bar",
    fruit: "<?php echo $fruit ?>"

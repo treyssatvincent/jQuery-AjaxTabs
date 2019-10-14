@@ -1,15 +1,15 @@
 <h2>JS for this demo</h2>
 
 <code>
-   &lt;script&gt;
-   $(document).ready(function() {
+    &lt;script&gt;
+    $(document).ready(function() {
 
-   $(&quot;.etabs .tab a[href='html.php']&quot;).data('post', {
-   _ajax_nonce: Math.random().toString(36).substring(7),
-   action: &quot;test_ajax&quot;,
-   toto: 'totoistoto' });
+    $(&quot;.etabs .tab a[href='html.php']&quot;).data('post', {
+    _ajax_nonce: Math.random().toString(36).substring(7),
+    action: &quot;test_ajax&quot;,
+    toto: 'totoistoto' });
 
-   $('#tab-container').ajaxtabs();
-   });
-   &lt;/script&gt;
+    $('#tab-container').ajaxtabs();
+    });
+    &lt;/script&gt;
 </code>
